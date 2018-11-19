@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-//const nodes = require('./routes/api/v1/nodes');
+const potNodes = require('./routes/api/v1/pot-nodes');
 
 const app = express();
 
@@ -19,7 +19,7 @@ mongoose
         console.log('MongoDB is connected...'))
     .catch(err => console.log(err));
 
-//app.use('/api/v1/nodes', nodes);
+app.use('/api/v1/pot-nodes', potNodes);
 
 const port = process.env.PORT || 5000;
 
