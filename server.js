@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 const potNodes = require('./routes/api/v1/pot-nodes');
+const soilTemperature = require('./routes/api/v1/soil-temperatures');
+const soilMoisture = require('./routes/api/v1/soil-moistures');
 
 const app = express();
 
@@ -19,7 +21,10 @@ mongoose
         console.log('MongoDB is connected...'))
     .catch(err => console.log(err));
 
+//Routes
 app.use('/api/v1/pot-nodes', potNodes);
+app.use('/api/v1/soil/temperatures', soilTemperature);
+app.use('/api/v1/soil/moistures', soilMoisture);
 
 const port = process.env.PORT || 5000;
 

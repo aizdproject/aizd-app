@@ -5,56 +5,42 @@ router.use(bodyParser.urlencoded({
     extended: false
 }));
 
-//Item model
-const Item = require('../../../models/PotNode');
+const PotNode = require('../../../models/PotNode');
+require('../../../models/Temperature');
+require('../../../models/Moisture');
 
-//@route    GET api/items
-//@desc     Get All Items
-//access    public
 router.get('/', (req, res) => {
-    Item.find()
-        .sort({
-            date: -1
-        })
-        .then(items => res.json(items));
+    PotNode.find()
+        .populate('soil_temperatures')
+        .populate('soil_moistures')
+        .then(potNodes => res.json(potNodes));
 });
 
-//@route    GET api/items
-//@desc     Get an Item
-//access    public
 router.get('/:id', (req, res) => {
-    Item.findById(req.params.id)
-        .then(item => res.json(item));
+    PotNode.findById(req.params.id)
+        .populate('soil_temperatures')
+        .populate('soil_moistures')
+        .then(potNode => res.json(potNode));
 });
 
-//@route    POST api/items
-//@desc     Post new Item
-//access    public
 router.post('/', (req, res) => {
-    const newItem = new Item({
+    const newPotNode = new PotNode({
         name: req.body.name,
         address: req.body.address,
-        air_quality: req.body.air_quality,
-        air_turbidity: req.body.air_turbidity,
-        soil_moisture: req.body.soil_moisture,
-        soil_temperature: req.body.soil_temperature,
     });
 
-
-    newItem.save().then(item => res.json(item));
+    newPotNode.save().then(potNode => res.json(potNode));
 })
 
-//@route    DELETE api/items
-//@desc     Delete an item
-//access    public
 router.delete('/:id', (req, res) => {
-    Item.findById(req.params.id)
-        .then(item => item.remove()
+    PotNode.findById(req.params.id)
+        .then(potNode => potNode.remove()
             .then(() => res.json({
-                success: true
+                message: 'Berhasil menghapus Pot'
             })))
         .catch(err => res.status(404).json({
-            success: false
+            message: 'Gagal menghapus Pot',
+            error: err.message
         }))
 })
 

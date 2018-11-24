@@ -11,22 +11,14 @@ const PotNodeSchema = new Schema({
         type: String,
         required: true
     },
-    air_quality: {
-        type: Number,
-        required: true
-    },
-    air_turbidity: {
-        type: Number,
-        required: true
-    },
-    soil_moisture: {
-        type: Number,
-        required: true
-    },
-    soil_temperature: {
-        type: Number,
-        required: true
-    },
+    soil_temperatures: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Temperature'
+    }],
+    soil_moistures: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Moisture'
+    }],
 });
 
 module.exports = PotNode = mongoose.model('pot-nodes', PotNodeSchema);
