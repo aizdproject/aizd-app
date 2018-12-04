@@ -2,8 +2,16 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //Create schema
-const PotNodeSchema = new Schema({
+const UserSchema = new Schema({
     name: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    password: {
         type: String,
         required: true
     },
@@ -11,14 +19,10 @@ const PotNodeSchema = new Schema({
         type: String,
         required: true
     },
-    soil_temperatures: [{
+    roles: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Temperature'
-    }],
-    soil_moistures: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Moisture'
+        ref: 'Role'
     }],
 });
 
-module.exports = PotNode = mongoose.model('PotNode', PotNodeSchema);
+module.exports = User = mongoose.model('User', UserSchema);
