@@ -6,8 +6,6 @@ router.use(bodyParser.urlencoded({
 }));
 
 const PotNode = require('../../../models/PotNode');
-require('../../../models/Temperature');
-require('../../../models/Moisture');
 
 router.get('/', (req, res) => {
     PotNode.find()
