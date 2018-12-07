@@ -5,7 +5,7 @@ router.use(bodyParser.urlencoded({
     extended: false
 }));
 
-const User = require('../../../models/User');
+const User = require('../../../../models/Auth/User');
 
 router.get('/', (req, res) => {
     User.find()

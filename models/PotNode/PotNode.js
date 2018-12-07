@@ -13,11 +13,11 @@ const PotNodeSchema = new Schema({
     },
     soil_temperatures: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Temperature'
+        ref: 'SoilTemperature'
     }],
     soil_moistures: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Moisture'
+        ref: 'SoilMoisture'
     }],
 });
 

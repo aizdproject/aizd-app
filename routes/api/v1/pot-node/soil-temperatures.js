@@ -7,8 +7,8 @@ router.use(bodyParser.urlencoded({
     extended: false
 }));
 
-const Temperature = require('../../../models/Temperature');
-const PotNode = require('../../../models/PotNode');
+const Temperature = require('../../../../models/PotNode/SoilTemperature');
+const PotNode = require('../../../../models/PotNode/PotNode');
 
 router.get('/', (req, res) => {
     Temperature.find()

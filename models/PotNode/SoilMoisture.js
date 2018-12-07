@@ -2,20 +2,20 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //Create schema
-const TemperatureSchema = new Schema({
-    temperature1: {
+const SoilMoistureSchema = new Schema({
+    moisture1: {
         type: Number,
         required: true,
     },
-    temperature2: {
+    moisture2: {
         type: Number,
         required: true,
     },
-    temperature3: {
+    moisture3: {
         type: Number,
         required: true,
     },
-    temperature4: {
+    moisture4: {
         type: Number,
         required: true,
     },
@@ -25,4 +25,4 @@ const TemperatureSchema = new Schema({
     }
 });
 
-module.exports = Temperature = mongoose.model('Temperature', TemperatureSchema);
+module.exports = SoilMoisture = mongoose.model('SoilMoisture', SoilMoistureSchema);

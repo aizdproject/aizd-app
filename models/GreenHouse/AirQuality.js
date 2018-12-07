@@ -2,20 +2,28 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //Create schema
-const MoistureSchema = new Schema({
-    moisture1: {
+const AirQualitySchema = new Schema({
+    air_quality1: {
         type: Number,
         required: true,
     },
-    moisture2: {
+    air_quality2: {
         type: Number,
         required: true,
     },
-    moisture3: {
+    air_quality3: {
         type: Number,
         required: true,
     },
-    moisture4: {
+    air_quality4: {
+        type: Number,
+        required: true,
+    },
+    air_quality5: {
+        type: Number,
+        required: true,
+    },
+    air_quality6: {
         type: Number,
         required: true,
     },
@@ -25,4 +33,4 @@ const MoistureSchema = new Schema({
     }
 });
 
-module.exports = Moisture = mongoose.model('Moisture', MoistureSchema);
+module.exports = AirQuality = mongoose.model('AirQuality', AirQualitySchema);
