@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
 })
 
 router.post('/data', (req, res) => {
-    PompNode.findByIdAndUpdate(req.body.pomp_id, {
+    PompNode.findByIdAndUpdate(req.body.pomp_node_id, {
             $push: {
                 water_turbidity: req.body.turbidity,
                 water_ph: req.body.ph,

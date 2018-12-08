@@ -23,24 +23,6 @@ router.get('/:id', (req, res) => {
         .then(temperature => res.json(temperature));
 });
 
-router.post('/', (req, res) => {
-    const newTemperature = new Temperature({
-        temperature1: req.body.temperature1,
-        temperature2: req.body.temperature2,
-        temperature3: req.body.temperature3,
-        temperature4: req.body.temperature4,
-    });
-
-    newTemperature.save().then(temperature => res.json(temperature));
-
-    PotNode.findById(req.body.pot_node_id)
-        .then(potNode => {
-            console.log("lala");
-            potNode.soil_temperatures.push(newTemperature);
-            potNode.save();
-        });
-})
-
 router.delete('/:id', (req, res) => {
     Temperature.findById(req.params.id)
         .then(temperature => temperature.remove()
@@ -50,6 +32,6 @@ router.delete('/:id', (req, res) => {
         .catch(err => res.status(404).json({
             success: false
         }))
-})
+});
 
 module.exports = router;

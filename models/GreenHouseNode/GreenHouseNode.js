@@ -11,19 +11,19 @@ const GreenHouseNodeSchema = new Schema({
         type: String,
         required: true
     },
-    humidity: [{
+    humidities: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Humidity'
     }],
-    temperature: [{
+    temperatures: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Temperature'
     }],
-    light_intensity: [{
+    light_intensities: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'LightIntensity'
     }],
-    air_quality: [{
+    air_qualities: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'AirQuality'
     }],
