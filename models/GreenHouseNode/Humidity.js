@@ -26,10 +26,6 @@ const HumiditySchema = new Schema({
     humidity6: {
         type: Number,
         required: true,
-    },
-    created_at: {
-        type: Date,
-        default: Date.now()
     }
 });
 

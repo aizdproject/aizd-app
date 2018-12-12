@@ -18,10 +18,6 @@ const SoilTemperatureSchema = new Schema({
     temperature4: {
         type: Number,
         required: true,
-    },
-    created_at: {
-        type: Date,
-        default: Date.now()
     }
 });
 

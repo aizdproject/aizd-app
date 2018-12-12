@@ -31,7 +31,8 @@ router.post('/data', (req, res) => {
             $push: {
                 water_turbidity: req.body.turbidity,
                 water_ph: req.body.ph,
-                water_flow: req.body.flow
+                water_flow: req.body.flow,
+                created_at: Date.now()
             }
         })
         .then(pompNode => res.status(201).json({

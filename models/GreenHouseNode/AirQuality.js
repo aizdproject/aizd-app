@@ -26,10 +26,6 @@ const AirQualitySchema = new Schema({
     air_quality6: {
         type: Number,
         required: true,
-    },
-    created_at: {
-        type: Date,
-        default: Date.now()
     }
 });
 

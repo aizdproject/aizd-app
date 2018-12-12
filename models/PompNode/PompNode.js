@@ -22,6 +22,9 @@ const PompNodeSchema = new Schema({
     water_flow: [{
         type: Number,
         required: true
+    }],
+    created_at: [{
+        type: Date
     }]
 });
 

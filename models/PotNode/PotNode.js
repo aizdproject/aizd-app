@@ -19,6 +19,9 @@ const PotNodeSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'SoilMoisture'
     }],
+    created_at: [{
+        type: Date
+    }]
 });
 
 module.exports = PotNode = mongoose.model('PotNode', PotNodeSchema);

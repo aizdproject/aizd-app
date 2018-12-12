@@ -59,7 +59,8 @@ router.post('/data', (req, res) => {
     PotNode.findByIdAndUpdate(req.body.pot_node_id, {
             $push: {
                 soil_temperatures: newTemperature,
-                soil_moistures: newMoisture
+                soil_moistures: newMoisture,
+                created_at: Date.now()
             }
         })
         .populate('soil_temperatures')

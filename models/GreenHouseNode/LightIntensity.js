@@ -26,10 +26,6 @@ const LightIntensitySchema = new Schema({
     light_intensity6: {
         type: Number,
         required: true,
-    },
-    created_at: {
-        type: Date,
-        default: Date.now()
     }
 });
 

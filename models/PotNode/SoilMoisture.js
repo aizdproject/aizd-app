@@ -18,10 +18,6 @@ const SoilMoistureSchema = new Schema({
     moisture4: {
         type: Number,
         required: true,
-    },
-    created_at: {
-        type: Date,
-        default: Date.now()
     }
 });
 

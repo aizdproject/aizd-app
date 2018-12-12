@@ -27,6 +27,9 @@ const GreenHouseNodeSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'AirQuality'
     }],
+    created_at: [{
+        type: Date
+    }]
 });
 
 module.exports = GreenHouseNode = mongoose.model('GreenHouseNode', GreenHouseNodeSchema);

@@ -84,7 +84,8 @@ router.post('/data', (req, res) => {
                 humidities: newHumidity,
                 temperatures: newTemperature,
                 light_intensities: newLightIntensity,
-                air_qualities: newAirQuality
+                air_qualities: newAirQuality,
+                created_at: Date.now()
             }
         })
         .populate('humidities')
