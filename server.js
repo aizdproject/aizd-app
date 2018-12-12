@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const pretty = require('express-prettify');
 
 const role = require('./routes/api/v1/auth/roles');
 const user = require('./routes/api/v1/auth/users');
@@ -16,6 +17,7 @@ const app = express();
 // Middleware
 app.use(bodyParser.json());
 app.use(cors());
+app.use(pretty({ query: 'pretty', always: true }));
 
 // DB config
 const db = require('./config/keys').mongoURI;
