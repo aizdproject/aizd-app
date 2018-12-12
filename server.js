@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const pretty = require('express-prettify');
+const moment = require('moment-timezone');
 
 const role = require('./routes/api/v1/auth/roles');
 const user = require('./routes/api/v1/auth/users');
@@ -13,6 +14,9 @@ const pompNode = require('./routes/api/v1/pomp-node/pomp-nodes');
 const greenHouseNode = require('./routes/api/v1/greenhouse-node/greenhouse-nodes');
 
 const app = express();
+
+moment.tz.setDefault('Asia/Jakarta');
+moment.locale('id');
 
 // Middleware
 app.use(bodyParser.json());

@@ -28,7 +28,7 @@ const GreenHouseNodeSchema = new Schema({
         ref: 'AirQuality'
     }],
     created_at: [{
-        type: Date
+        type: String
     }]
 });
 

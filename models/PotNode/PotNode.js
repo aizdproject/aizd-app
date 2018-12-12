@@ -20,7 +20,7 @@ const PotNodeSchema = new Schema({
         ref: 'SoilMoisture'
     }],
     created_at: [{
-        type: Date
+        type: String
     }]
 });
 

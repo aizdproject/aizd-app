@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const moment = require('moment-timezone');
 const bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({
     extended: false
@@ -32,7 +33,7 @@ router.post('/data', (req, res) => {
                 water_turbidity: req.body.turbidity,
                 water_ph: req.body.ph,
                 water_flow: req.body.flow,
-                created_at: Date.now()
+                created_at: moment().format('DD/MM/YYYY-H:mm:ss')
             }
         })
         .then(pompNode => res.status(201).json({

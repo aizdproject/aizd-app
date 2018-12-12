@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
+const moment = require('moment-timezone');
 router.use(bodyParser.urlencoded({
     extended: false
 }));
@@ -60,7 +61,7 @@ router.post('/data', (req, res) => {
             $push: {
                 soil_temperatures: newTemperature,
                 soil_moistures: newMoisture,
-                created_at: Date.now()
+                created_at: moment().format('DD/MM/YYYY-H:mm:ss')
             }
         })
         .populate('soil_temperatures')
