@@ -57,6 +57,8 @@ router.post('/data', (req, res) => {
     });
     newMoisture.save();
 
+    id = req.body.pot_node_id;
+
     PotNode.findByIdAndUpdate(req.body.pot_node_id, {
             $push: {
                 soil_temperatures: newTemperature,
@@ -67,6 +69,8 @@ router.post('/data', (req, res) => {
         .populate('soil_temperatures')
         .populate('soil_moistures')
         .then(potNode => res.status(201).json({
+            newTemperature,
+            id,
             potNode
         }))
         .catch(err => res.status(404).json({
