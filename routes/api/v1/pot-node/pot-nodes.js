@@ -65,11 +65,12 @@ router.post('/data', (req, res) => {
                 soil_moistures: newMoisture,
                 created_at: moment().format('DD/MM/YYYY-H:mm:ss')
             }
-        })
+        }, { new: true })
         .populate('soil_temperatures')
         .populate('soil_moistures')
         .then(potNode => res.status(201).json({
             newTemperature,
+            newMoisture,
             id,
             potNode
         }))

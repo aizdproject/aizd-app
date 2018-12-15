@@ -12,6 +12,7 @@ const soilTemperature = require('./routes/api/v1/pot-node/soil-temperatures');
 const soilMoisture = require('./routes/api/v1/pot-node/soil-moistures');
 const pompNode = require('./routes/api/v1/pomp-node/pomp-nodes');
 const greenHouseNode = require('./routes/api/v1/greenhouse-node/greenhouse-nodes');
+const nodeStatistic = require('./routes/api/v1/analysis/node-statistics');
 
 const app = express();
 
@@ -42,6 +43,7 @@ app.use('/api/v1/soil/temperatures', soilTemperature);
 app.use('/api/v1/soil/moistures', soilMoisture);
 app.use('/api/v1/pomp-nodes', pompNode);
 app.use('/api/v1/greenhouse-nodes', greenHouseNode);
+app.use('/api/v1/node-statistics', nodeStatistic);
 
 const port = process.env.PORT || 5000;
 
