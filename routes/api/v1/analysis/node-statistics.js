@@ -24,13 +24,10 @@ router.get('/soil-temperature', (req, res) => {
 
                 res.status(200).json(soil_temperatures[soil_temperatures.length - 1])
             }
-
-            res.status(404).json({
-                message: 'Tidak ada record'
-            });
         })
         .catch(err => res.status(404).json({
-            message: err.message
+            message: 'Tidak ada record',
+            error: err.message
         }))
 });
 
@@ -48,13 +45,10 @@ router.get('/soil-moisture', (req, res) => {
 
                 res.status(200).json(soil_moistures[soil_moistures.length - 1])
             }
-
-            res.status(404).json({
-                message: 'Tidak ada record'
-            });
         })
         .catch(err => res.status(404).json({
-            message: err.message
+            message: 'Tidak ada record',
+            error: err.message
         }))
 });
 
@@ -69,21 +63,19 @@ router.get('/water-turbidity', (req, res) => {
 
                 let water_turbidity = lastUpdatedNode.water_turbidity;
 
-                res.status(200).json(water_turbidity[water_turbidity.length - 1])
+                res.status(200).json({
+                    water_turbidity: water_turbidity[water_turbidity.length - 1]
+                })
             }
-
-            res.status(404).json({
-                message: 'Tidak ada record'
-            });
         })
         .catch(err => res.status(404).json({
-            message: err.message
+            message: 'Tidak ada record',
+            error: err.message
         }))
 });
 
 router.get('/water-ph', (req, res) => {
     PompNode.find()
-        .populate('water_ph')
         .sort({
             created_at: -1
         })
@@ -93,21 +85,19 @@ router.get('/water-ph', (req, res) => {
 
                 let water_ph = lastUpdatedNode.water_ph;
 
-                res.status(200).json(water_ph[water_ph.length - 1])
+                res.status(200).json({
+                    water_ph: water_ph[water_ph.length - 1]
+                })
             }
-
-            res.status(404).json({
-                message: 'Tidak ada record'
-            });
         })
         .catch(err => res.status(404).json({
-            message: err.message
+            message: 'Tidak ada record',
+            error: err.message
         }))
 });
 
 router.get('/water-flow', (req, res) => {
     PompNode.find()
-        .populate('water_flow')
         .sort({
             created_at: -1
         })
@@ -117,15 +107,14 @@ router.get('/water-flow', (req, res) => {
 
                 let water_flow = lastUpdatedNode.water_flow;
 
-                res.status(200).json(water_flow[water_flow.length - 1])
+                res.status(200).json({
+                    water_flow: water_flow[water_flow.length - 1]
+                })
             }
-
-            res.status(404).json({
-                message: 'Tidak ada record'
-            });
         })
         .catch(err => res.status(404).json({
-            message: err.message
+            message: 'Tidak ada record',
+            error: err.message
         }))
 });
 
@@ -143,13 +132,10 @@ router.get('/environment-humidity', (req, res) => {
 
                 res.status(200).json(humidities[humidities.length - 1])
             }
-
-            res.status(404).json({
-                message: 'Tidak ada record'
-            });
         })
         .catch(err => res.status(404).json({
-            message: err.message
+            message: 'Tidak ada record',
+            error: err.message
         }))
 });
 
@@ -167,13 +153,10 @@ router.get('/environment-temperature', (req, res) => {
 
                 res.status(200).json(temperatures[temperatures.length - 1])
             }
-
-            res.status(404).json({
-                message: 'Tidak ada record'
-            });
         })
         .catch(err => res.status(404).json({
-            message: err.message
+            message: 'Tidak ada record',
+            error: err.message
         }))
 });
 
@@ -191,13 +174,10 @@ router.get('/air-quality', (req, res) => {
 
                 res.status(200).json(air_qualities[air_qualities.length - 1])
             }
-
-            res.status(404).json({
-                message: 'Tidak ada record'
-            });
         })
         .catch(err => res.status(404).json({
-            message: err.message
+            message: 'Tidak ada record',
+            error: err.message
         }))
 });
 
@@ -215,13 +195,10 @@ router.get('/light-intensity', (req, res) => {
 
                 res.status(200).json(light_intensities[light_intensities.length - 1])
             }
-
-            res.status(404).json({
-                message: 'Tidak ada record'
-            });
         })
         .catch(err => res.status(404).json({
-            message: err.message
+            message: 'Tidak ada record',
+            error: err.message
         }))
 });
 

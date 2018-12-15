@@ -4,7 +4,7 @@
   "description": "AizD Project",
   "main": "server.js",
   "engines": {
-    "node": "10.x"
+    "node": "^10.x"
   },
   "scripts": {
     "start": "node server.js",
