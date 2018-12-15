@@ -60,7 +60,6 @@ router.get('/soil-moisture', (req, res) => {
 
 router.get('/water-turbidity', (req, res) => {
     PompNode.find()
-        .populate('water_turbidity')
         .sort({
             created_at: -1
         })
