@@ -27,6 +27,9 @@ const AlphaSchema = new Schema({
     air_temperature: [{
         type: Number,
     }],
+    air_humidity: [{
+        type: Number,
+    }],
     air_gas_quality: [{
         type: Number,
     }],
