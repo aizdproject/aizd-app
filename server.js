@@ -13,6 +13,7 @@ const soilMoisture = require('./routes/api/v1/pot-node/soil-moistures');
 const pompNode = require('./routes/api/v1/pomp-node/pomp-nodes');
 const greenHouseNode = require('./routes/api/v1/greenhouse-node/greenhouse-nodes');
 const nodeStatistic = require('./routes/api/v1/analysis/node-statistics');
+const alphaService = require('./routes/api/v1/alpa-route/alpha-nodes');
 
 const app = express();
 
@@ -35,6 +36,8 @@ mongoose
         console.log('MongoDB is connected...'))
     .catch(err => console.log(err));
 
+// var string = '12#13#14';
+
 // Routes
 app.use('/api/v1/roles', role);
 app.use('/api/v1/users', user);
@@ -44,6 +47,7 @@ app.use('/api/v1/soil/moistures', soilMoisture);
 app.use('/api/v1/pomp-nodes', pompNode);
 app.use('/api/v1/greenhouse-nodes', greenHouseNode);
 app.use('/api/v1/node-statistics', nodeStatistic);
+app.use('/api/v1/alpha', alphaService);
 
 const port = process.env.PORT || 5000;
 
