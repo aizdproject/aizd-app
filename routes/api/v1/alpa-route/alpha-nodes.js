@@ -9,7 +9,7 @@ router.use(bodyParser.urlencoded({
 
 const Alpha = require('../../../../models/AlphaModel/Alpha');
 
-let pusher = new Pusher({
+const pusher = new Pusher({
     appId: '678390',
     key: 'b01fb79d33e790f8c38d',
     secret: 'd1f13cad97b92dd92a39',
