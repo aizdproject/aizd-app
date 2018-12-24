@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 const bodyParser = require('body-parser');
 const pretty = require('express-prettify');
 const moment = require('moment-timezone');
@@ -20,6 +21,9 @@ const app = express();
 moment.tz.setDefault('Asia/Jakarta');
 moment.locale('id');
 
+// Set Public folder
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Middleware
 app.use(bodyParser.json());
 app.use(cors());
@@ -35,8 +39,6 @@ mongoose
     .then(() => 
         console.log('MongoDB is connected...'))
     .catch(err => console.log(err));
-
-// var string = '12#13#14';
 
 // Routes
 app.use('/api/v1/roles', role);
