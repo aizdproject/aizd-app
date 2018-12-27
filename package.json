@@ -30,6 +30,7 @@
     "moment-timezone": "^0.5.23",
     "mongoose": "^5.4.0",
     "mongoose-validator": "^2.1.0",
+    "mqtt": "^2.18.8",
     "pusher": "^2.2.0"
   },
   "devDependencies": {
