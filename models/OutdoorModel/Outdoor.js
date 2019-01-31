@@ -1,11 +1,30 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-//Create schema
-const AlphaSchema = new Schema({
+const OutdoorSchema = new Schema({
   name: {
     type: String
   },
+  climate_temperature: [
+    {
+      type: Number
+    }
+  ],
+  climate_humidity: [
+    {
+      type: Number
+    }
+  ],
+  climate_cda: [
+    {
+      type: Number
+    }
+  ],
+  climate_par: [
+    {
+      type: Number
+    }
+  ],
   soil_temperature: [
     {
       type: Number
@@ -36,21 +55,6 @@ const AlphaSchema = new Schema({
       type: Number
     }
   ],
-  air_temperature: [
-    {
-      type: Number
-    }
-  ],
-  air_humidity: [
-    {
-      type: Number
-    }
-  ],
-  air_gas_quality: [
-    {
-      type: Number
-    }
-  ],
   created_at: [
     {
       type: String
@@ -58,4 +62,4 @@ const AlphaSchema = new Schema({
   ]
 });
 
-module.exports = Alpha = mongoose.model("Alpha", AlphaSchema);
+module.exports = Outdoor = mongoose.model("Outdoor", OutdoorSchema);
