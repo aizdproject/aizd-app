@@ -24,7 +24,7 @@ moment.tz.setDefault("Asia/Jakarta");
 moment.locale("id");
 
 // Set Public folder
-app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.static(path.join(__dirname, "public")));
 
 // Middleware
 app.use(bodyParser.json());
