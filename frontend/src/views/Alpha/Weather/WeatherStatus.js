@@ -19,7 +19,7 @@ export default class WeatherStatus extends Component {
 
   async componentDidMount() {
     try {
-      const data = await axios.get(`http://${host}?q=${query}&APPID=${appId}`);
+      const data = await axios.get(`https://${host}?q=${query}&APPID=${appId}`);
       if (!data) {
         throw new Error("Terdapat kesalahan.");
       }
