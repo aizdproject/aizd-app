@@ -51,6 +51,11 @@ const AlphaSchema = new Schema({
       type: Number
     }
   ],
+  light_intensity: [
+    {
+      type: Number
+    }
+  ],
   created_at: [
     {
       type: String
