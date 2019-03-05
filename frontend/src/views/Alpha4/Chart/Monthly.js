@@ -9,6 +9,7 @@ import moment from 'moment';
 const brandSuccess = getStyle('--success');
 const brandInfo = getStyle('--info');
 const brandDanger = getStyle('--danger');
+const brandWarning = getStyle('--warning');
 
 const pusher = new Pusher('b01fb79d33e790f8c38d', {
   cluster: 'ap1',
@@ -18,6 +19,7 @@ const channel = pusher.subscribe('alpha');
 
 export default class AirChart extends Component {
   _isMounted = false;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -55,7 +57,7 @@ export default class AirChart extends Component {
               ticks: {
                 beginAtZero: true,
                 maxTicksLimit: 5,
-                stepSize: 10
+                stepSize: 50
               }
             }
           ]
@@ -74,61 +76,59 @@ export default class AirChart extends Component {
 
   async componentDidMount() {
     this._isMounted = true;
-    await axios.get('/api/v1/alpha').then(res => {
-      const alpha = res.data[0];
+    await axios.get('/api/v1/airnode/5c7e67e4a73fb30004ead94f').then(res => {
+      const alpha = res.data;
       let temperature = [];
       let humidity = [];
       let gas_quality = [];
+      let light_intensity = [];
       let created_at = [];
 
       if (alpha) {
-        let week = 0;
+        let month = 0;
         let count = 0;
         let temp_temperature = 0;
         let temp_humidity = 0;
         let temp_gas_quality = 0;
+        let temp_light_intensity = 0;
 
-        week = 0;
+        month = 0;
         count = 0;
         alpha.air_temperature.forEach((element, index) => {
-          let now = moment(
-            alpha.created_at[index],
-            'DD/MM/YYYY-H:mm:ss'
-          ).week();
+          let now =
+            moment(alpha.created_at[index], 'DD/MM/YYYY-H:mm:ss').month() + 1;
           let year = moment(
             alpha.created_at[index],
             'DD/MM/YYYY-H:mm:ss'
-          ).weekYear();
+          ).year();
           let pop = true;
 
-          if (now !== week) {
+          if (now !== month) {
             pop = false;
-            week = now;
+            month = now;
             count = 0;
             temp_temperature = 0;
           }
+          temp_temperature += element;
+          count++;
           if (temperature.length !== 0 && pop) {
             temperature.pop();
             created_at.pop();
           }
-          temp_temperature += element;
-          count++;
           temperature.push(temp_temperature / count);
-          created_at.push('Minggu ' + now + ' (' + year + ')');
+          created_at.push('Bulan ' + now + ' (' + year + ')');
         });
 
-        week = 0;
+        month = 0;
         count = 0;
         alpha.air_humidity.forEach((element, index) => {
-          let now = moment(
-            alpha.created_at[index],
-            'DD/MM/YYYY-H:mm:ss'
-          ).week();
+          let now =
+            moment(alpha.created_at[index], 'DD/MM/YYYY-H:mm:ss').month() + 1;
           let pop = true;
 
-          if (now !== week) {
+          if (now !== month) {
             pop = false;
-            week = now;
+            month = now;
             count = 0;
             temp_humidity = 0;
           }
@@ -140,18 +140,16 @@ export default class AirChart extends Component {
           humidity.push(temp_humidity / count);
         });
 
-        week = 0;
+        month = 0;
         count = 0;
         alpha.air_quality.forEach((element, index) => {
-          let now = moment(
-            alpha.created_at[index],
-            'DD/MM/YYYY-H:mm:ss'
-          ).week();
+          let now =
+            moment(alpha.created_at[index], 'DD/MM/YYYY-H:mm:ss').month() + 1;
           let pop = true;
 
-          if (now !== week) {
+          if (now !== month) {
             pop = false;
-            week = now;
+            month = now;
             count = 0;
             temp_gas_quality = 0;
           }
@@ -161,6 +159,27 @@ export default class AirChart extends Component {
             gas_quality.pop();
           }
           gas_quality.push(temp_gas_quality / count);
+        });
+
+        month = 0;
+        count = 0;
+        alpha.light_intensity.forEach((element, index) => {
+          let now =
+            moment(alpha.created_at[index], 'DD/MM/YYYY-H:mm:ss').month() + 1;
+          let pop = true;
+
+          if (now !== month) {
+            pop = false;
+            month = now;
+            count = 0;
+            temp_light_intensity = 0;
+          }
+          temp_light_intensity += element;
+          count++;
+          if (light_intensity.length !== 0 && pop) {
+            light_intensity.pop();
+          }
+          light_intensity.push(temp_light_intensity / count);
         });
       }
 
@@ -192,6 +211,14 @@ export default class AirChart extends Component {
                 pointHoverBackgroundColor: '#fff',
                 borderWidth: 2,
                 data: gas_quality
+              },
+              {
+                label: 'Light Intensity',
+                backgroundColor: hexToRgba(brandWarning, 10),
+                borderColor: brandWarning,
+                pointHoverBackgroundColor: '#fff',
+                borderWidth: 2,
+                data: light_intensity
               }
             ]
           }
@@ -204,56 +231,54 @@ export default class AirChart extends Component {
       let temperature = [];
       let humidity = [];
       let gas_quality = [];
+      let light_intensity = [];
       let created_at = [];
 
       if (alpha) {
-        let week = 0;
+        let month = 0;
         let count = 0;
         let temp_temperature = 0;
         let temp_humidity = 0;
         let temp_gas_quality = 0;
+        let temp_light_intensity = 0;
 
-        week = 0;
+        month = 0;
         count = 0;
         alpha.air_temperature.forEach((element, index) => {
-          let now = moment(
-            alpha.created_at[index],
-            'DD/MM/YYYY-H:mm:ss'
-          ).week();
+          let now =
+            moment(alpha.created_at[index], 'DD/MM/YYYY-H:mm:ss').month() + 1;
           let year = moment(
             alpha.created_at[index],
             'DD/MM/YYYY-H:mm:ss'
-          ).weekYear();
+          ).year();
           let pop = true;
 
-          if (now !== week) {
+          if (now !== month) {
             pop = false;
-            week = now;
+            month = now;
             count = 0;
             temp_temperature = 0;
           }
+          temp_temperature += element;
+          count++;
           if (temperature.length !== 0 && pop) {
             temperature.pop();
             created_at.pop();
           }
-          temp_temperature += element;
-          count++;
           temperature.push(temp_temperature / count);
-          created_at.push('Minggu ' + now + ' (' + year + ')');
+          created_at.push('Bulan ' + now + ' (' + year + ')');
         });
 
-        week = 0;
+        month = 0;
         count = 0;
         alpha.air_humidity.forEach((element, index) => {
-          let now = moment(
-            alpha.created_at[index],
-            'DD/MM/YYYY-H:mm:ss'
-          ).week();
+          let now =
+            moment(alpha.created_at[index], 'DD/MM/YYYY-H:mm:ss').month() + 1;
           let pop = true;
 
-          if (now !== week) {
+          if (now !== month) {
             pop = false;
-            week = now;
+            month = now;
             count = 0;
             temp_humidity = 0;
           }
@@ -265,18 +290,16 @@ export default class AirChart extends Component {
           humidity.push(temp_humidity / count);
         });
 
-        week = 0;
+        month = 0;
         count = 0;
         alpha.air_quality.forEach((element, index) => {
-          let now = moment(
-            alpha.created_at[index],
-            'DD/MM/YYYY-H:mm:ss'
-          ).week();
+          let now =
+            moment(alpha.created_at[index], 'DD/MM/YYYY-H:mm:ss').month() + 1;
           let pop = true;
 
-          if (now !== week) {
+          if (now !== month) {
             pop = false;
-            week = now;
+            month = now;
             count = 0;
             temp_gas_quality = 0;
           }
@@ -286,6 +309,27 @@ export default class AirChart extends Component {
             gas_quality.pop();
           }
           gas_quality.push(temp_gas_quality / count);
+        });
+
+        month = 0;
+        count = 0;
+        alpha.light_intensity.forEach((element, index) => {
+          let now =
+            moment(alpha.created_at[index], 'DD/MM/YYYY-H:mm:ss').month() + 1;
+          let pop = true;
+
+          if (now !== month) {
+            pop = false;
+            month = now;
+            count = 0;
+            temp_light_intensity = 0;
+          }
+          temp_light_intensity += element;
+          count++;
+          if (light_intensity.length !== 0 && pop) {
+            light_intensity.pop();
+          }
+          light_intensity.push(temp_light_intensity / count);
         });
       }
 
@@ -317,6 +361,14 @@ export default class AirChart extends Component {
                 pointHoverBackgroundColor: '#fff',
                 borderWidth: 2,
                 data: gas_quality
+              },
+              {
+                label: 'Light Intensity',
+                backgroundColor: hexToRgba(brandWarning, 10),
+                borderColor: brandWarning,
+                pointHoverBackgroundColor: '#fff',
+                borderWidth: 2,
+                data: light_intensity
               }
             ]
           }

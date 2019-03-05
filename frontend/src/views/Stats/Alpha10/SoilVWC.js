@@ -57,17 +57,16 @@ export default class PotNodeChart extends Component {
 
   async componentDidMount() {
     this._isMounted = true;
-    await axios.get('/api/v1/alpha').then(res => {
-      const alpha_node = res.data[0];
-      let air_qualities = [];
+    await axios.get('/api/v1/alpha/5c7e6839a73fb30004ead950').then(res => {
+      const alpha_node = res.data;
+      let soil_vwcs = [];
       let created_at = [];
       console.log(alpha_node);
-      let last_gas_quality =
-        alpha_node.air_quality[alpha_node.air_quality.length - 1];
+      let last_soil_vwc = alpha_node.soil_vwc[alpha_node.soil_vwc.length - 1];
 
       if (alpha_node) {
-        alpha_node.air_quality.forEach(element => {
-          air_qualities.push(element);
+        alpha_node.soil_vwc.forEach(element => {
+          soil_vwcs.push(element);
         });
 
         alpha_node.created_at.forEach(element => {
@@ -80,14 +79,14 @@ export default class PotNodeChart extends Component {
               labels: created_at,
               datasets: [
                 {
-                  label: 'Air Gas Quality',
+                  label: 'Soil VWC',
                   backgroundColor: 'rgba(255,255,255,.2)',
                   borderColor: 'rgba(255,255,255,.55)',
-                  data: air_qualities
+                  data: soil_vwcs
                 }
               ]
             },
-            Value: last_gas_quality
+            Value: last_soil_vwc
           });
         }
       }
@@ -95,14 +94,13 @@ export default class PotNodeChart extends Component {
 
     await channel.bind('update-alpha', data => {
       const alpha_node = data;
-      let air_qualities = [];
+      let soil_vwcs = [];
       let created_at = [];
-      let last_gas_quality =
-        alpha_node.air_quality[alpha_node.air_quality.length - 1];
+      let last_soil_vwc = alpha_node.soil_vwc[alpha_node.soil_vwc.length - 1];
 
       if (alpha_node) {
-        alpha_node.air_quality.forEach(element => {
-          air_qualities.push(element);
+        alpha_node.soil_vwc.forEach(element => {
+          soil_vwcs.push(element);
         });
 
         alpha_node.created_at.forEach(element => {
@@ -115,14 +113,14 @@ export default class PotNodeChart extends Component {
               labels: created_at,
               datasets: [
                 {
-                  label: 'Air Gas Quality',
+                  label: 'Soil VWC',
                   backgroundColor: 'rgba(255,255,255,.2)',
                   borderColor: 'rgba(255,255,255,.55)',
-                  data: air_qualities
+                  data: soil_vwcs
                 }
               ]
             },
-            Value: last_gas_quality
+            Value: last_soil_vwc
           });
         }
       }
@@ -138,9 +136,9 @@ export default class PotNodeChart extends Component {
       <Card className='text-white bg-success'>
         <CardBody className='pb-0'>
           <div className='text-value'>
-            <CountUp end={this.state.Value} duration={9} decimals={2} /> ppm
+            <CountUp end={this.state.Value} duration={1} decimals={2} /> %
           </div>
-          <div>Air Gas Quality</div>
+          <div>Soil VWC</div>
         </CardBody>
         <div className='chart-wrapper' style={{ height: '70px' }}>
           <Line

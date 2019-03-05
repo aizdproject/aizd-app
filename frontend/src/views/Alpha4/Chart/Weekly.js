@@ -9,6 +9,7 @@ import moment from 'moment';
 const brandSuccess = getStyle('--success');
 const brandInfo = getStyle('--info');
 const brandDanger = getStyle('--danger');
+const brandWarning = getStyle('--warning');
 
 const pusher = new Pusher('b01fb79d33e790f8c38d', {
   cluster: 'ap1',
@@ -55,7 +56,7 @@ export default class AirChart extends Component {
               ticks: {
                 beginAtZero: true,
                 maxTicksLimit: 5,
-                stepSize: 10
+                stepSize: 50
               }
             }
           ]
@@ -74,11 +75,12 @@ export default class AirChart extends Component {
 
   async componentDidMount() {
     this._isMounted = true;
-    await axios.get('/api/v1/alpha').then(res => {
-      const alpha = res.data[0];
+    await axios.get('/api/v1/airnode/5c7e67e4a73fb30004ead94f').then(res => {
+      const alpha = res.data;
       let temperature = [];
       let humidity = [];
       let gas_quality = [];
+      let light_intensity = [];
       let created_at = [];
 
       if (alpha) {
@@ -87,6 +89,7 @@ export default class AirChart extends Component {
         let temp_temperature = 0;
         let temp_humidity = 0;
         let temp_gas_quality = 0;
+        let temp_light_intensity = 0;
 
         week = 0;
         count = 0;
@@ -162,6 +165,29 @@ export default class AirChart extends Component {
           }
           gas_quality.push(temp_gas_quality / count);
         });
+
+        week = 0;
+        count = 0;
+        alpha.light_intensity.forEach((element, index) => {
+          let now = moment(
+            alpha.created_at[index],
+            'DD/MM/YYYY-H:mm:ss'
+          ).week();
+          let pop = true;
+
+          if (now !== week) {
+            pop = false;
+            week = now;
+            count = 0;
+            temp_light_intensity = 0;
+          }
+          temp_light_intensity += element;
+          count++;
+          if (light_intensity.length !== 0 && pop) {
+            light_intensity.pop();
+          }
+          light_intensity.push(temp_light_intensity / count);
+        });
       }
 
       if (this._isMounted) {
@@ -192,6 +218,14 @@ export default class AirChart extends Component {
                 pointHoverBackgroundColor: '#fff',
                 borderWidth: 2,
                 data: gas_quality
+              },
+              {
+                label: 'Light Intensity',
+                backgroundColor: hexToRgba(brandWarning, 10),
+                borderColor: brandWarning,
+                pointHoverBackgroundColor: '#fff',
+                borderWidth: 2,
+                data: light_intensity
               }
             ]
           }
@@ -204,6 +238,7 @@ export default class AirChart extends Component {
       let temperature = [];
       let humidity = [];
       let gas_quality = [];
+      let light_intensity = [];
       let created_at = [];
 
       if (alpha) {
@@ -212,6 +247,7 @@ export default class AirChart extends Component {
         let temp_temperature = 0;
         let temp_humidity = 0;
         let temp_gas_quality = 0;
+        let temp_light_intensity = 0;
 
         week = 0;
         count = 0;
@@ -287,6 +323,29 @@ export default class AirChart extends Component {
           }
           gas_quality.push(temp_gas_quality / count);
         });
+
+        week = 0;
+        count = 0;
+        alpha.light_intensity.forEach((element, index) => {
+          let now = moment(
+            alpha.created_at[index],
+            'DD/MM/YYYY-H:mm:ss'
+          ).week();
+          let pop = true;
+
+          if (now !== week) {
+            pop = false;
+            week = now;
+            count = 0;
+            temp_light_intensity = 0;
+          }
+          temp_light_intensity += element;
+          count++;
+          if (light_intensity.length !== 0 && pop) {
+            light_intensity.pop();
+          }
+          light_intensity.push(temp_light_intensity / count);
+        });
       }
 
       if (this._isMounted) {
@@ -317,6 +376,14 @@ export default class AirChart extends Component {
                 pointHoverBackgroundColor: '#fff',
                 borderWidth: 2,
                 data: gas_quality
+              },
+              {
+                label: 'Light Intensity',
+                backgroundColor: hexToRgba(brandWarning, 10),
+                borderColor: brandWarning,
+                pointHoverBackgroundColor: '#fff',
+                borderWidth: 2,
+                data: light_intensity
               }
             ]
           }

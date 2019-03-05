@@ -6,8 +6,8 @@ export default {
       icon: 'icon-speedometer',
       badge: {
         variant: 'info',
-        text: 'NEW',
-      },
+        text: 'NEW'
+      }
     },
     {
       name: 'Alpha',
@@ -16,6 +16,24 @@ export default {
       badge: {
         variant: 'warning',
         text: 'MANUAL'
+      }
+    },
+    {
+      name: 'Alpha',
+      url: '/alpha-four-data',
+      icon: 'icon-speedometer',
+      badge: {
+        variant: 'info',
+        text: '4 DATA'
+      }
+    },
+    {
+      name: 'Alpha',
+      url: '/alpha-ten-data',
+      icon: 'icon-speedometer',
+      badge: {
+        variant: 'success',
+        text: '10 DATA'
       }
     },
     // {
@@ -59,11 +77,11 @@ export default {
     //       url: '/base/breadcrumbs',
     //       icon: 'icon-puzzle',
     //     },
-        // {
-        //   name: 'Cards',
-        //   url: '/base/cards',
-        //   icon: 'icon-puzzle',
-        // },
+    // {
+    //   name: 'Cards',
+    //   url: '/base/cards',
+    //   icon: 'icon-puzzle',
+    // },
     //     {
     //       name: 'Carousels',
     //       url: '/base/carousels',
@@ -114,11 +132,11 @@ export default {
     //       url: '/base/switches',
     //       icon: 'icon-puzzle',
     //     },
-        {
-          name: 'Tables',
-          url: '/base/tables',
-          icon: 'icon-puzzle',
-        },
+    {
+      name: 'Tables',
+      url: '/base/tables',
+      icon: 'icon-puzzle'
+    }
     //     {
     //       name: 'Tabs',
     //       url: '/base/tabs',
@@ -263,5 +281,5 @@ export default {
     //     },
     //   ],
     // },
-  ],
+  ]
 };

@@ -9,6 +9,7 @@ import Pusher from 'pusher-js';
 const brandSuccess = getStyle('--success');
 const brandInfo = getStyle('--info');
 const brandDanger = getStyle('--danger');
+const brandWarning = getStyle('--warning');
 
 const pusher = new Pusher('b01fb79d33e790f8c38d', {
   cluster: 'ap1',
@@ -56,7 +57,7 @@ export default class AirChart extends Component {
               ticks: {
                 beginAtZero: true,
                 maxTicksLimit: 5,
-                stepSize: 10
+                stepSize: 50
               }
             }
           ]
@@ -75,11 +76,12 @@ export default class AirChart extends Component {
 
   async componentDidMount() {
     this._isMounted = true;
-    await axios.get('/api/v1/alpha').then(res => {
-      const alpha = res.data[0];
+    await axios.get('/api/v1/airnode/5c7e67e4a73fb30004ead94f').then(res => {
+      const alpha = res.data;
       let temperature = [];
       let humidity = [];
       let gas_quality = [];
+      let light_intensity = [];
       let created_at = [];
 
       if (alpha) {
@@ -96,6 +98,10 @@ export default class AirChart extends Component {
           gas_quality.push(element);
         });
 
+        alpha.light_intensity.forEach(element => {
+          light_intensity.push(element);
+        });
+
         alpha.created_at.forEach(element => {
           created_at.push(element);
         });
@@ -129,6 +135,14 @@ export default class AirChart extends Component {
                 pointHoverBackgroundColor: '#fff',
                 borderWidth: 2,
                 data: gas_quality
+              },
+              {
+                label: 'Light Intensity',
+                backgroundColor: hexToRgba(brandWarning, 10),
+                borderColor: brandWarning,
+                pointHoverBackgroundColor: '#fff',
+                borderWidth: 2,
+                data: light_intensity
               }
             ]
           }
@@ -141,6 +155,7 @@ export default class AirChart extends Component {
       let temperature = [];
       let humidity = [];
       let gas_quality = [];
+      let light_intensity = [];
       let created_at = [];
 
       if (alpha) {
@@ -156,6 +171,10 @@ export default class AirChart extends Component {
           gas_quality.push(element);
         });
 
+        alpha.light_intensity.forEach(element => {
+          light_intensity.push(element);
+        });
+
         alpha.created_at.forEach(element => {
           created_at.push(element);
         });
@@ -189,6 +208,14 @@ export default class AirChart extends Component {
                 pointHoverBackgroundColor: '#fff',
                 borderWidth: 2,
                 data: gas_quality
+              },
+              {
+                label: 'Light Intensity',
+                backgroundColor: hexToRgba(brandWarning, 10),
+                borderColor: brandWarning,
+                pointHoverBackgroundColor: '#fff',
+                borderWidth: 2,
+                data: light_intensity
               }
             ]
           }

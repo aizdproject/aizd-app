@@ -1,269 +1,281 @@
-import React from "react";
-import Loadable from "react-loadable";
-import Spinner from "../src/spinner/Spinner";
+import React from 'react';
+import Loadable from 'react-loadable';
+import Spinner from '../src/spinner/Spinner';
 
-import DefaultLayout from "./containers/DefaultLayout";
+import DefaultLayout from './containers/DefaultLayout';
 
 function Loading() {
   return <Spinner />;
 }
 
 const Breadcrumbs = Loadable({
-  loader: () => import("./views/Base/Breadcrumbs"),
+  loader: () => import('./views/Base/Breadcrumbs'),
   loading: Loading
 });
 
 const Cards = Loadable({
-  loader: () => import("./views/Base/Cards"),
+  loader: () => import('./views/Base/Cards'),
   loading: Loading
 });
 
 const Carousels = Loadable({
-  loader: () => import("./views/Base/Carousels"),
+  loader: () => import('./views/Base/Carousels'),
   loading: Loading
 });
 
 const Collapses = Loadable({
-  loader: () => import("./views/Base/Collapses"),
+  loader: () => import('./views/Base/Collapses'),
   loading: Loading
 });
 
 const Dropdowns = Loadable({
-  loader: () => import("./views/Base/Dropdowns"),
+  loader: () => import('./views/Base/Dropdowns'),
   loading: Loading
 });
 
 const Forms = Loadable({
-  loader: () => import("./views/Base/Forms"),
+  loader: () => import('./views/Base/Forms'),
   loading: Loading
 });
 
 const Jumbotrons = Loadable({
-  loader: () => import("./views/Base/Jumbotrons"),
+  loader: () => import('./views/Base/Jumbotrons'),
   loading: Loading
 });
 
 const ListGroups = Loadable({
-  loader: () => import("./views/Base/ListGroups"),
+  loader: () => import('./views/Base/ListGroups'),
   loading: Loading
 });
 
 const Navbars = Loadable({
-  loader: () => import("./views/Base/Navbars"),
+  loader: () => import('./views/Base/Navbars'),
   loading: Loading
 });
 
 const Navs = Loadable({
-  loader: () => import("./views/Base/Navs"),
+  loader: () => import('./views/Base/Navs'),
   loading: Loading
 });
 
 const Paginations = Loadable({
-  loader: () => import("./views/Base/Paginations"),
+  loader: () => import('./views/Base/Paginations'),
   loading: Loading
 });
 
 const Popovers = Loadable({
-  loader: () => import("./views/Base/Popovers"),
+  loader: () => import('./views/Base/Popovers'),
   loading: Loading
 });
 
 const ProgressBar = Loadable({
-  loader: () => import("./views/Base/ProgressBar"),
+  loader: () => import('./views/Base/ProgressBar'),
   loading: Loading
 });
 
 const Switches = Loadable({
-  loader: () => import("./views/Base/Switches"),
+  loader: () => import('./views/Base/Switches'),
   loading: Loading
 });
 
 const Tables = Loadable({
-  loader: () => import("./views/Base/Tables"),
+  loader: () => import('./views/Base/Tables'),
   loading: Loading
 });
 
 const Tabs = Loadable({
-  loader: () => import("./views/Base/Tabs"),
+  loader: () => import('./views/Base/Tabs'),
   loading: Loading
 });
 
 const Tooltips = Loadable({
-  loader: () => import("./views/Base/Tooltips"),
+  loader: () => import('./views/Base/Tooltips'),
   loading: Loading
 });
 
 const BrandButtons = Loadable({
-  loader: () => import("./views/Buttons/BrandButtons"),
+  loader: () => import('./views/Buttons/BrandButtons'),
   loading: Loading
 });
 
 const ButtonDropdowns = Loadable({
-  loader: () => import("./views/Buttons/ButtonDropdowns"),
+  loader: () => import('./views/Buttons/ButtonDropdowns'),
   loading: Loading
 });
 
 const ButtonGroups = Loadable({
-  loader: () => import("./views/Buttons/ButtonGroups"),
+  loader: () => import('./views/Buttons/ButtonGroups'),
   loading: Loading
 });
 
 const Buttons = Loadable({
-  loader: () => import("./views/Buttons/Buttons"),
+  loader: () => import('./views/Buttons/Buttons'),
   loading: Loading
 });
 
 const Charts = Loadable({
-  loader: () => import("./views/Charts"),
+  loader: () => import('./views/Charts'),
   loading: Loading
 });
 
 const Dashboard = Loadable({
-  loader: () => import("./views/Dashboard"),
+  loader: () => import('./views/Dashboard'),
   loading: Loading
 });
 
 const CoreUIIcons = Loadable({
-  loader: () => import("./views/Icons/CoreUIIcons"),
+  loader: () => import('./views/Icons/CoreUIIcons'),
   loading: Loading
 });
 
 const Flags = Loadable({
-  loader: () => import("./views/Icons/Flags"),
+  loader: () => import('./views/Icons/Flags'),
   loading: Loading
 });
 
 const FontAwesome = Loadable({
-  loader: () => import("./views/Icons/FontAwesome"),
+  loader: () => import('./views/Icons/FontAwesome'),
   loading: Loading
 });
 
 const SimpleLineIcons = Loadable({
-  loader: () => import("./views/Icons/SimpleLineIcons"),
+  loader: () => import('./views/Icons/SimpleLineIcons'),
   loading: Loading
 });
 
 const Alerts = Loadable({
-  loader: () => import("./views/Notifications/Alerts"),
+  loader: () => import('./views/Notifications/Alerts'),
   loading: Loading
 });
 
 const Badges = Loadable({
-  loader: () => import("./views/Notifications/Badges"),
+  loader: () => import('./views/Notifications/Badges'),
   loading: Loading
 });
 
 const Modals = Loadable({
-  loader: () => import("./views/Notifications/Modals"),
+  loader: () => import('./views/Notifications/Modals'),
   loading: Loading
 });
 
 const Colors = Loadable({
-  loader: () => import("./views/Theme/Colors"),
+  loader: () => import('./views/Theme/Colors'),
   loading: Loading
 });
 
 const Typography = Loadable({
-  loader: () => import("./views/Theme/Typography"),
+  loader: () => import('./views/Theme/Typography'),
   loading: Loading
 });
 
 const Widgets = Loadable({
-  loader: () => import("./views/Widgets/Widgets"),
+  loader: () => import('./views/Widgets/Widgets'),
   loading: Loading
 });
 
 const Users = Loadable({
-  loader: () => import("./views/Users/Users"),
+  loader: () => import('./views/Users/Users'),
   loading: Loading
 });
 
 const User = Loadable({
-  loader: () => import("./views/Users/User"),
+  loader: () => import('./views/Users/User'),
   loading: Loading
 });
 
 const NodeSensorForm = Loadable({
-  loader: () => import("./views/Forms/NodeSensorForm"),
+  loader: () => import('./views/Forms/NodeSensorForm'),
   loading: Loading
 });
 
 const Alpha = Loadable({
-  loader: () => import("./views/Alpha/Dashboard"),
+  loader: () => import('./views/Alpha/Dashboard'),
+  loading: Loading
+});
+
+const Alpha4 = Loadable({
+  loader: () => import('./views/Alpha4/Dashboard'),
+  loading: Loading
+});
+
+const Alpha10 = Loadable({
+  loader: () => import('./views/Alpha10/Dashboard'),
   loading: Loading
 });
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
-  { path: "/", exact: true, name: "Home", component: Dashboard },
-  { path: "/dashboard", name: "Dashboard", component: Dashboard },
-  { path: "/theme", exact: true, name: "Theme", component: Colors },
-  { path: "/theme/colors", name: "Colors", component: Colors },
-  { path: "/theme/typography", name: "Typography", component: Typography },
-  { path: "/base", exact: true, name: "Base", component: Cards },
-  { path: "/base/cards", name: "Cards", component: Cards },
-  { path: "/base/forms", name: "Forms", component: Forms },
-  { path: "/base/switches", name: "Switches", component: Switches },
-  { path: "/base/tables", name: "Tables", component: Tables },
-  { path: "/base/tabs", name: "Tabs", component: Tabs },
-  { path: "/base/breadcrumbs", name: "Breadcrumbs", component: Breadcrumbs },
-  { path: "/base/carousels", name: "Carousel", component: Carousels },
-  { path: "/base/collapses", name: "Collapse", component: Collapses },
-  { path: "/base/dropdowns", name: "Dropdowns", component: Dropdowns },
-  { path: "/base/jumbotrons", name: "Jumbotrons", component: Jumbotrons },
-  { path: "/base/list-groups", name: "List Groups", component: ListGroups },
-  { path: "/base/navbars", name: "Navbars", component: Navbars },
-  { path: "/base/navs", name: "Navs", component: Navs },
-  { path: "/base/paginations", name: "Paginations", component: Paginations },
-  { path: "/base/popovers", name: "Popovers", component: Popovers },
-  { path: "/base/progress-bar", name: "Progress Bar", component: ProgressBar },
-  { path: "/base/tooltips", name: "Tooltips", component: Tooltips },
-  { path: "/buttons", exact: true, name: "Buttons", component: Buttons },
-  { path: "/buttons/buttons", name: "Buttons", component: Buttons },
+  { path: '/', exact: true, name: 'Home', component: Dashboard },
+  { path: '/dashboard', name: 'Dashboard', component: Dashboard },
+  { path: '/theme', exact: true, name: 'Theme', component: Colors },
+  { path: '/theme/colors', name: 'Colors', component: Colors },
+  { path: '/theme/typography', name: 'Typography', component: Typography },
+  { path: '/base', exact: true, name: 'Base', component: Cards },
+  { path: '/base/cards', name: 'Cards', component: Cards },
+  { path: '/base/forms', name: 'Forms', component: Forms },
+  { path: '/base/switches', name: 'Switches', component: Switches },
+  { path: '/base/tables', name: 'Tables', component: Tables },
+  { path: '/base/tabs', name: 'Tabs', component: Tabs },
+  { path: '/base/breadcrumbs', name: 'Breadcrumbs', component: Breadcrumbs },
+  { path: '/base/carousels', name: 'Carousel', component: Carousels },
+  { path: '/base/collapses', name: 'Collapse', component: Collapses },
+  { path: '/base/dropdowns', name: 'Dropdowns', component: Dropdowns },
+  { path: '/base/jumbotrons', name: 'Jumbotrons', component: Jumbotrons },
+  { path: '/base/list-groups', name: 'List Groups', component: ListGroups },
+  { path: '/base/navbars', name: 'Navbars', component: Navbars },
+  { path: '/base/navs', name: 'Navs', component: Navs },
+  { path: '/base/paginations', name: 'Paginations', component: Paginations },
+  { path: '/base/popovers', name: 'Popovers', component: Popovers },
+  { path: '/base/progress-bar', name: 'Progress Bar', component: ProgressBar },
+  { path: '/base/tooltips', name: 'Tooltips', component: Tooltips },
+  { path: '/buttons', exact: true, name: 'Buttons', component: Buttons },
+  { path: '/buttons/buttons', name: 'Buttons', component: Buttons },
   {
-    path: "/buttons/button-dropdowns",
-    name: "Button Dropdowns",
+    path: '/buttons/button-dropdowns',
+    name: 'Button Dropdowns',
     component: ButtonDropdowns
   },
   {
-    path: "/buttons/button-groups",
-    name: "Button Groups",
+    path: '/buttons/button-groups',
+    name: 'Button Groups',
     component: ButtonGroups
   },
   {
-    path: "/buttons/brand-buttons",
-    name: "Brand Buttons",
+    path: '/buttons/brand-buttons',
+    name: 'Brand Buttons',
     component: BrandButtons
   },
-  { path: "/icons", exact: true, name: "Icons", component: CoreUIIcons },
-  { path: "/icons/coreui-icons", name: "CoreUI Icons", component: CoreUIIcons },
-  { path: "/icons/flags", name: "Flags", component: Flags },
-  { path: "/icons/font-awesome", name: "Font Awesome", component: FontAwesome },
+  { path: '/icons', exact: true, name: 'Icons', component: CoreUIIcons },
+  { path: '/icons/coreui-icons', name: 'CoreUI Icons', component: CoreUIIcons },
+  { path: '/icons/flags', name: 'Flags', component: Flags },
+  { path: '/icons/font-awesome', name: 'Font Awesome', component: FontAwesome },
   {
-    path: "/icons/simple-line-icons",
-    name: "Simple Line Icons",
+    path: '/icons/simple-line-icons',
+    name: 'Simple Line Icons',
     component: SimpleLineIcons
   },
   {
-    path: "/notifications",
+    path: '/notifications',
     exact: true,
-    name: "Notifications",
+    name: 'Notifications',
     component: Alerts
   },
-  { path: "/notifications/alerts", name: "Alerts", component: Alerts },
-  { path: "/notifications/badges", name: "Badges", component: Badges },
-  { path: "/notifications/modals", name: "Modals", component: Modals },
-  { path: "/widgets", name: "Widgets", component: Widgets },
-  { path: "/charts", name: "Charts", component: Charts },
-  { path: "/users", exact: true, name: "Users", component: Users },
-  { path: "/users/:id", exact: true, name: "User Details", component: User },
+  { path: '/notifications/alerts', name: 'Alerts', component: Alerts },
+  { path: '/notifications/badges', name: 'Badges', component: Badges },
+  { path: '/notifications/modals', name: 'Modals', component: Modals },
+  { path: '/widgets', name: 'Widgets', component: Widgets },
+  { path: '/charts', name: 'Charts', component: Charts },
+  { path: '/users', exact: true, name: 'Users', component: Users },
+  { path: '/users/:id', exact: true, name: 'User Details', component: User },
   {
-    path: "/forms/node",
+    path: '/forms/node',
     exact: true,
-    name: "Form Node Sensor",
+    name: 'Form Node Sensor',
     component: NodeSensorForm
   },
-  { path: "/alpha", exact: true, name: "Alpha", component: Alpha }
+  { path: '/alpha', exact: true, name: 'Alpha', component: Alpha },
+  { path: '/alpha-four-data', exact: true, name: 'Alpha4', component: Alpha4 },
+  { path: '/alpha-ten-data', exact: true, name: 'Alpha10', component: Alpha10 }
 ];
 
 export default routes;

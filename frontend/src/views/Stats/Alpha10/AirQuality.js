@@ -57,8 +57,8 @@ export default class PotNodeChart extends Component {
 
   async componentDidMount() {
     this._isMounted = true;
-    await axios.get('/api/v1/alpha').then(res => {
-      const alpha_node = res.data[0];
+    await axios.get('/api/v1/alpha/5c7e6839a73fb30004ead950').then(res => {
+      const alpha_node = res.data;
       let air_qualities = [];
       let created_at = [];
       console.log(alpha_node);
@@ -138,7 +138,7 @@ export default class PotNodeChart extends Component {
       <Card className='text-white bg-success'>
         <CardBody className='pb-0'>
           <div className='text-value'>
-            <CountUp end={this.state.Value} duration={9} decimals={2} /> ppm
+            <CountUp end={this.state.Value} duration={1} decimals={2} /> ppm
           </div>
           <div>Air Gas Quality</div>
         </CardBody>
