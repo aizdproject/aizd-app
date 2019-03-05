@@ -46,7 +46,7 @@ const AlphaSchema = new Schema({
       type: Number
     }
   ],
-  air_gas_quality: [
+  air_quality: [
     {
       type: Number
     }

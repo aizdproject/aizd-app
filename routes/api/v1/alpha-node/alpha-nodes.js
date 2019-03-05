@@ -38,7 +38,7 @@ router.post("/", (req, res) => {
     soil_epsilon: req.body.soil_epsilon,
     air_humidity: req.body.air_humidity,
     air_temperature: req.body.air_temperature,
-    air_gas_quality: req.body.air_gas_quality,
+    air_quality: req.body.air_quality,
     light_intensity: req.body.light_intensity,
     created_at: moment().format("DD/MM/YYYY-H:mm:ss")
   });
@@ -56,7 +56,7 @@ router.post("/", (req, res) => {
         soil_epsilon: alpha.soil_epsilon,
         air_humidity: alpha.air_humidity,
         air_temperature: alpha.air_temperature,
-        air_gas_quality: alpha.air_gas_quality,
+        air_quality: alpha.air_quality,
         light_intensity: alpha.light_intensity,
         created_at: alpha.created_at
       });
@@ -81,7 +81,7 @@ router.post("/:id", (req, res) => {
         soil_epsilon: req.body.soil_epsilon,
         air_humidity: req.body.air_humidity,
         air_temperature: req.body.air_temperature,
-        air_gas_quality: req.body.air_gas_quality,
+        air_quality: req.body.air_quality,
         light_intensity: req.body.light_intensity,
         created_at: moment().format("DD/MM/YYYY-H:mm:ss")
       }
@@ -99,7 +99,7 @@ router.post("/:id", (req, res) => {
         soil_epsilon: alpha.soil_epsilon,
         air_humidity: alpha.air_humidity,
         air_temperature: alpha.air_temperature,
-        air_gas_quality: alpha.air_gas_quality,
+        air_quality: alpha.air_quality,
         light_intensity: alpha.light_intensity,
         created_at: alpha.created_at
       });
