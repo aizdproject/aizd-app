@@ -16,6 +16,7 @@ const pompNode = require("./routes/api/v1/pomp-node/pomp-nodes");
 const greenHouseNode = require("./routes/api/v1/greenhouse-node/greenhouse-nodes");
 const nodeStatistic = require("./routes/api/v1/analysis/node-statistics");
 const alphaService = require("./routes/api/v1/alpha-node/alpha-nodes");
+const airnodeService = require("./routes/api/v1/alpha-node/air-nodes");
 const outdoorService = require("./routes/api/v1/outdoor-node/outdoor-nodes");
 
 const app = express();
@@ -55,6 +56,8 @@ app.use("/api/v1/greenhouse-nodes", greenHouseNode);
 app.use("/api/v1/node-statistics", nodeStatistic);
 app.use("/api/v1/alpha", alphaService);
 app.use("/api/v1/outdoor", outdoorService);
+app.use("/api/v1/airnode", airnodeService);
+
 
 if (process.env.NODE_ENV === 'production') {
   // Set static folder
