@@ -32,7 +32,7 @@ router.post("/", (req, res) => {
     name: req.body.name,
     air_humidity: req.body.air_humidity,
     air_temperature: req.body.air_temperature,
-    air_gas_quality: req.body.air_gas_quality,
+    air_quality: req.body.air_quality,
     light_intensity: req.body.light_intensity,
     created_at: moment().format("DD/MM/YYYY-H:mm:ss")
   });
@@ -44,7 +44,7 @@ router.post("/", (req, res) => {
         name: airnode.name,
         air_humidity: airnode.air_humidity,
         air_temperature: airnode.air_temperature,
-        air_gas_quality: airnode.air_gas_quality,
+        air_quality: airnode.air_quality,
         light_intensity: airnode.light_intensity,
         created_at: airnode.created_at
       });
@@ -63,7 +63,7 @@ router.post("/:id", (req, res) => {
       $push: {
         air_humidity: req.body.air_humidity,
         air_temperature: req.body.air_temperature,
-        air_gas_quality: req.body.air_gas_quality,
+        air_quality: req.body.air_quality,
         light_intensity: req.body.light_intensity,
         created_at: moment().format("DD/MM/YYYY-H:mm:ss")
       }
@@ -75,7 +75,7 @@ router.post("/:id", (req, res) => {
         name: airnode.name,
         air_humidity: airnode.air_humidity,
         air_temperature: airnode.air_temperature,
-        air_gas_quality: airnode.air_gas_quality,
+        air_quality: airnode.air_quality,
         light_intensity: airnode.light_intensity,
         created_at: airnode.created_at
       });
