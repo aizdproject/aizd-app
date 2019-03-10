@@ -78,10 +78,6 @@ export default class AirChart extends Component {
     this._isMounted = true;
     await axios.get('/api/v1/alpha/5c7e6839a73fb30004ead950').then(res => {
       const alpha = res.data;
-      let temperature = [];
-      let humidity = [];
-      let gas_quality = [];
-      let light_intensity = [];
       let soil_ec = [];
       let soil_epsilon = [];
       let soil_salinity = [];
@@ -92,22 +88,6 @@ export default class AirChart extends Component {
 
       if (alpha) {
         // console.log(moment('16/03/1998', 'DD/MM/YYYY-H:mm:ss').year());
-        alpha.air_temperature.forEach(element => {
-          temperature.push(element);
-        });
-
-        alpha.air_humidity.forEach(element => {
-          humidity.push(element);
-        });
-
-        alpha.air_quality.forEach(element => {
-          gas_quality.push(element);
-        });
-
-        alpha.light_intensity.forEach(element => {
-          light_intensity.push(element);
-        });
-
         alpha.soil_ec.forEach(element => {
           soil_ec.push(element);
         });
@@ -142,38 +122,6 @@ export default class AirChart extends Component {
           Data: {
             labels: created_at,
             datasets: [
-              {
-                label: 'Temperature',
-                backgroundColor: hexToRgba(brandInfo, 10),
-                borderColor: brandInfo,
-                pointHoverBackgroundColor: '#fff',
-                borderWidth: 2,
-                data: temperature
-              },
-              {
-                label: 'Humidity',
-                backgroundColor: hexToRgba(brandDanger, 10),
-                borderColor: brandDanger,
-                pointHoverBackgroundColor: '#fff',
-                borderWidth: 2,
-                data: humidity
-              },
-              {
-                label: 'Gas Quality',
-                backgroundColor: hexToRgba(brandSuccess, 10),
-                borderColor: brandSuccess,
-                pointHoverBackgroundColor: '#fff',
-                borderWidth: 2,
-                data: gas_quality
-              },
-              {
-                label: 'Light Intensity',
-                backgroundColor: hexToRgba(brandWarning, 10),
-                borderColor: brandWarning,
-                pointHoverBackgroundColor: '#fff',
-                borderWidth: 2,
-                data: light_intensity
-              },
               {
                 label: 'Soil EC',
                 backgroundColor: hexToRgba(brandInfo, 10),
@@ -230,10 +178,6 @@ export default class AirChart extends Component {
 
     await channel.bind('update-alpha', data => {
       const alpha = data;
-      let temperature = [];
-      let humidity = [];
-      let gas_quality = [];
-      let light_intensity = [];
       let soil_ec = [];
       let soil_epsilon = [];
       let soil_salinity = [];
@@ -244,22 +188,6 @@ export default class AirChart extends Component {
 
       if (alpha) {
         // console.log(moment('16/03/1998', 'DD/MM/YYYY-H:mm:ss').year());
-        alpha.air_temperature.forEach(element => {
-          temperature.push(element);
-        });
-
-        alpha.air_humidity.forEach(element => {
-          humidity.push(element);
-        });
-
-        alpha.air_quality.forEach(element => {
-          gas_quality.push(element);
-        });
-
-        alpha.light_intensity.forEach(element => {
-          light_intensity.push(element);
-        });
-
         alpha.soil_ec.forEach(element => {
           soil_ec.push(element);
         });
@@ -294,38 +222,6 @@ export default class AirChart extends Component {
           Data: {
             labels: created_at,
             datasets: [
-              {
-                label: 'Temperature',
-                backgroundColor: hexToRgba(brandInfo, 10),
-                borderColor: brandInfo,
-                pointHoverBackgroundColor: '#fff',
-                borderWidth: 2,
-                data: temperature
-              },
-              {
-                label: 'Humidity',
-                backgroundColor: hexToRgba(brandDanger, 10),
-                borderColor: brandDanger,
-                pointHoverBackgroundColor: '#fff',
-                borderWidth: 2,
-                data: humidity
-              },
-              {
-                label: 'Gas Quality',
-                backgroundColor: hexToRgba(brandSuccess, 10),
-                borderColor: brandSuccess,
-                pointHoverBackgroundColor: '#fff',
-                borderWidth: 2,
-                data: gas_quality
-              },
-              {
-                label: 'Light Intensity',
-                backgroundColor: hexToRgba(brandWarning, 10),
-                borderColor: brandWarning,
-                pointHoverBackgroundColor: '#fff',
-                borderWidth: 2,
-                data: light_intensity
-              },
               {
                 label: 'Soil EC',
                 backgroundColor: hexToRgba(brandInfo, 10),

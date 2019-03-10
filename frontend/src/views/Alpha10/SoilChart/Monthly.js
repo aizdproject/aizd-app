@@ -78,10 +78,6 @@ export default class AirChart extends Component {
     this._isMounted = true;
     await axios.get('/api/v1/alpha/5c7e6839a73fb30004ead950').then(res => {
       const alpha = res.data;
-      let temperature = [];
-      let humidity = [];
-      let gas_quality = [];
-      let light_intensity = [];
       let soil_ec = [];
       let soil_epsilon = [];
       let soil_salinity = [];
@@ -93,106 +89,12 @@ export default class AirChart extends Component {
       if (alpha) {
         let month = 0;
         let count = 0;
-        let temp_temperature = 0;
-        let temp_humidity = 0;
-        let temp_gas_quality = 0;
-        let temp_light_intensity = 0;
         let temp_soil_ec = 0;
         let temp_soil_epsilon = 0;
         let temp_soil_salinity = 0;
         let temp_soil_tds = 0;
         let temp_soil_temperature = 0;
         let temp_soil_vwc = 0;
-
-        month = 0;
-        count = 0;
-        alpha.air_temperature.forEach((element, index) => {
-          let now =
-            moment(alpha.created_at[index], 'DD/MM/YYYY-H:mm:ss').month() + 1;
-          let year = moment(
-            alpha.created_at[index],
-            'DD/MM/YYYY-H:mm:ss'
-          ).year();
-          let pop = true;
-
-          if (now !== month) {
-            pop = false;
-            month = now;
-            count = 0;
-            temp_temperature = 0;
-          }
-          temp_temperature += element;
-          count++;
-          if (temperature.length !== 0 && pop) {
-            temperature.pop();
-            created_at.pop();
-          }
-          temperature.push(temp_temperature / count);
-          created_at.push('Bulan ' + now + ' (' + year + ')');
-        });
-
-        month = 0;
-        count = 0;
-        alpha.air_humidity.forEach((element, index) => {
-          let now =
-            moment(alpha.created_at[index], 'DD/MM/YYYY-H:mm:ss').month() + 1;
-          let pop = true;
-
-          if (now !== month) {
-            pop = false;
-            month = now;
-            count = 0;
-            temp_humidity = 0;
-          }
-          temp_humidity += element;
-          count++;
-          if (humidity.length !== 0 && pop) {
-            humidity.pop();
-          }
-          humidity.push(temp_humidity / count);
-        });
-
-        month = 0;
-        count = 0;
-        alpha.air_quality.forEach((element, index) => {
-          let now =
-            moment(alpha.created_at[index], 'DD/MM/YYYY-H:mm:ss').month() + 1;
-          let pop = true;
-
-          if (now !== month) {
-            pop = false;
-            month = now;
-            count = 0;
-            temp_gas_quality = 0;
-          }
-          temp_gas_quality += element;
-          count++;
-          if (gas_quality.length !== 0 && pop) {
-            gas_quality.pop();
-          }
-          gas_quality.push(temp_gas_quality / count);
-        });
-
-        month = 0;
-        count = 0;
-        alpha.light_intensity.forEach((element, index) => {
-          let now =
-            moment(alpha.created_at[index], 'DD/MM/YYYY-H:mm:ss').month() + 1;
-          let pop = true;
-
-          if (now !== month) {
-            pop = false;
-            month = now;
-            count = 0;
-            temp_light_intensity = 0;
-          }
-          temp_light_intensity += element;
-          count++;
-          if (light_intensity.length !== 0 && pop) {
-            light_intensity.pop();
-          }
-          light_intensity.push(temp_light_intensity / count);
-        });
 
         month = 0;
         count = 0;
@@ -326,38 +228,6 @@ export default class AirChart extends Component {
           Data: {
             labels: created_at,
             datasets: [
-              {
-                label: 'Temperature',
-                backgroundColor: hexToRgba(brandInfo, 10),
-                borderColor: brandInfo,
-                pointHoverBackgroundColor: '#fff',
-                borderWidth: 2,
-                data: temperature
-              },
-              {
-                label: 'Humidity',
-                backgroundColor: hexToRgba(brandDanger, 10),
-                borderColor: brandDanger,
-                pointHoverBackgroundColor: '#fff',
-                borderWidth: 2,
-                data: humidity
-              },
-              {
-                label: 'Gas Quality',
-                backgroundColor: hexToRgba(brandSuccess, 10),
-                borderColor: brandSuccess,
-                pointHoverBackgroundColor: '#fff',
-                borderWidth: 2,
-                data: gas_quality
-              },
-              {
-                label: 'Light Intensity',
-                backgroundColor: hexToRgba(brandWarning, 10),
-                borderColor: brandWarning,
-                pointHoverBackgroundColor: '#fff',
-                borderWidth: 2,
-                data: light_intensity
-              },
               {
                 label: 'Soil EC',
                 backgroundColor: hexToRgba(brandInfo, 10),
@@ -414,10 +284,6 @@ export default class AirChart extends Component {
 
     await channel.bind('update-alpha', data => {
       const alpha = data;
-      let temperature = [];
-      let humidity = [];
-      let gas_quality = [];
-      let light_intensity = [];
       let soil_ec = [];
       let soil_epsilon = [];
       let soil_salinity = [];
@@ -429,106 +295,12 @@ export default class AirChart extends Component {
       if (alpha) {
         let month = 0;
         let count = 0;
-        let temp_temperature = 0;
-        let temp_humidity = 0;
-        let temp_gas_quality = 0;
-        let temp_light_intensity = 0;
         let temp_soil_ec = 0;
         let temp_soil_epsilon = 0;
         let temp_soil_salinity = 0;
         let temp_soil_tds = 0;
         let temp_soil_temperature = 0;
         let temp_soil_vwc = 0;
-
-        month = 0;
-        count = 0;
-        alpha.air_temperature.forEach((element, index) => {
-          let now =
-            moment(alpha.created_at[index], 'DD/MM/YYYY-H:mm:ss').month() + 1;
-          let year = moment(
-            alpha.created_at[index],
-            'DD/MM/YYYY-H:mm:ss'
-          ).year();
-          let pop = true;
-
-          if (now !== month) {
-            pop = false;
-            month = now;
-            count = 0;
-            temp_temperature = 0;
-          }
-          temp_temperature += element;
-          count++;
-          if (temperature.length !== 0 && pop) {
-            temperature.pop();
-            created_at.pop();
-          }
-          temperature.push(temp_temperature / count);
-          created_at.push('Bulan ' + now + ' (' + year + ')');
-        });
-
-        month = 0;
-        count = 0;
-        alpha.air_humidity.forEach((element, index) => {
-          let now =
-            moment(alpha.created_at[index], 'DD/MM/YYYY-H:mm:ss').month() + 1;
-          let pop = true;
-
-          if (now !== month) {
-            pop = false;
-            month = now;
-            count = 0;
-            temp_humidity = 0;
-          }
-          temp_humidity += element;
-          count++;
-          if (humidity.length !== 0 && pop) {
-            humidity.pop();
-          }
-          humidity.push(temp_humidity / count);
-        });
-
-        month = 0;
-        count = 0;
-        alpha.air_quality.forEach((element, index) => {
-          let now =
-            moment(alpha.created_at[index], 'DD/MM/YYYY-H:mm:ss').month() + 1;
-          let pop = true;
-
-          if (now !== month) {
-            pop = false;
-            month = now;
-            count = 0;
-            temp_gas_quality = 0;
-          }
-          temp_gas_quality += element;
-          count++;
-          if (gas_quality.length !== 0 && pop) {
-            gas_quality.pop();
-          }
-          gas_quality.push(temp_gas_quality / count);
-        });
-
-        month = 0;
-        count = 0;
-        alpha.light_intensity.forEach((element, index) => {
-          let now =
-            moment(alpha.created_at[index], 'DD/MM/YYYY-H:mm:ss').month() + 1;
-          let pop = true;
-
-          if (now !== month) {
-            pop = false;
-            month = now;
-            count = 0;
-            temp_light_intensity = 0;
-          }
-          temp_light_intensity += element;
-          count++;
-          if (light_intensity.length !== 0 && pop) {
-            light_intensity.pop();
-          }
-          light_intensity.push(temp_light_intensity / count);
-        });
 
         month = 0;
         count = 0;
@@ -662,38 +434,6 @@ export default class AirChart extends Component {
           Data: {
             labels: created_at,
             datasets: [
-              {
-                label: 'Temperature',
-                backgroundColor: hexToRgba(brandInfo, 10),
-                borderColor: brandInfo,
-                pointHoverBackgroundColor: '#fff',
-                borderWidth: 2,
-                data: temperature
-              },
-              {
-                label: 'Humidity',
-                backgroundColor: hexToRgba(brandDanger, 10),
-                borderColor: brandDanger,
-                pointHoverBackgroundColor: '#fff',
-                borderWidth: 2,
-                data: humidity
-              },
-              {
-                label: 'Gas Quality',
-                backgroundColor: hexToRgba(brandSuccess, 10),
-                borderColor: brandSuccess,
-                pointHoverBackgroundColor: '#fff',
-                borderWidth: 2,
-                data: gas_quality
-              },
-              {
-                label: 'Light Intensity',
-                backgroundColor: hexToRgba(brandWarning, 10),
-                borderColor: brandWarning,
-                pointHoverBackgroundColor: '#fff',
-                borderWidth: 2,
-                data: light_intensity
-              },
               {
                 label: 'Soil EC',
                 backgroundColor: hexToRgba(brandInfo, 10),

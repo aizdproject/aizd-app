@@ -11,7 +11,8 @@ import SoilSalinityStats from '../Stats/Alpha10/SoilSalinity';
 import SoilTDSStats from '../Stats/Alpha10/SoilTDS';
 import SoilTemperatureStats from '../Stats/Alpha10/SoilTemperature';
 import SoilVWCStats from '../Stats/Alpha10/SoilVWC';
-import Air from '../Alpha10/Chart';
+import Air from '../Alpha10/AirChart';
+import Soil from '../Alpha10/SoilChart';
 // import WeatherStatus from './Weather/WeatherStatus';
 
 class Dashboard extends Component {
@@ -91,11 +92,26 @@ class Dashboard extends Component {
               <CardBody>
                 <Row>
                   <Col xs='6' sm='6' lg='6'>
-                    <div className='text-value'>Chart</div>
+                    <div className='text-value'>Air Chart</div>
                   </Col>
                 </Row>
                 <br />
                 <Air />
+              </CardBody>
+            </Card>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs='12' sm='12' lg='12'>
+            <Card>
+              <CardBody>
+                <Row>
+                  <Col xs='6' sm='6' lg='6'>
+                    <div className='text-value'>Soil Chart</div>
+                  </Col>
+                </Row>
+                <br />
+                <Soil />
               </CardBody>
             </Card>
           </Col>
